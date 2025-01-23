@@ -8,7 +8,7 @@ export function Header() {
 
   return (
     <header className="fixed w-full z-50 bg-white">
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="container max-w-5xl mx-auto px-6">
         <div className="py-4 flex items-center justify-center">
           <Link href="/">
             <a className="text-2xl font-bold">BIG</a>
