@@ -41,16 +41,9 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
         {!isExpanded ? (
           // Unexpanded view - grid layout with text on side
           <div 
-            className="grid grid-cols-[120px,1fr] gap-3 items-center justify-items-center w-full px-4 cursor-pointer"
+            className="grid grid-cols-[1fr,120px] gap-3 items-center justify-items-end w-full px-4 cursor-pointer" 
             onClick={() => onExpand(project.id)}
           >
-            <div className="text-center">
-              <h3 className="text-sm font-medium">{project.title}</h3>
-              <p className="text-xs text-gray-600 mt-1">
-                {project.location}
-              </p>
-            </div>
-
             <motion.div
               className="relative aspect-video w-full max-w-sm"
               whileHover={{ scale: 0.98 }}
@@ -61,6 +54,13 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
                 className="w-full h-full object-cover"
               />
             </motion.div>
+
+            <div className="text-right">
+              <h3 className="text-sm font-medium">{project.title}</h3>
+              <p className="text-xs text-gray-600 mt-1">
+                {project.location}
+              </p>
+            </div>
           </div>
         ) : (
           // Expanded view - full width with text below
