@@ -41,10 +41,10 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
         {!isExpanded ? (
           // Unexpanded view - grid layout with text on side
           <div 
-            className="grid grid-cols-[120px,1fr] gap-[5px] items-center w-full px-4 cursor-pointer" 
+            className="grid grid-cols-[120px,1fr] gap-[2px] items-center w-full px-4 cursor-pointer" 
             onClick={() => onExpand(project.id)}
           >
-            <div>
+            <div className="text-right">
               <h3 className="text-sm font-medium">{project.title}</h3>
               <p className="text-xs text-gray-600 mt-1">
                 {project.location}
