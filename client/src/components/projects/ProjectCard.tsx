@@ -41,7 +41,7 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
         {!isExpanded ? (
           // Unexpanded view - grid layout with text on side
           <div 
-            className="grid grid-cols-[120px,1fr] gap-[4px] items-start w-full px-4 cursor-pointer" 
+            className="grid grid-cols-[120px,1fr] gap-[4px] items-start w-full px-4 cursor-pointer ml-12" // Added ml-12 for left margin
             onClick={() => onExpand(project.id)}
           >
             <div className="text-right space-y-2">
