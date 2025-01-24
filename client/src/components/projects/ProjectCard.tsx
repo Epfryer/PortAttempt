@@ -31,8 +31,12 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
         {!isExpanded ? (
           // Non-expanded view
           <div 
-            className="grid grid-cols-[1fr,minmax(120px,15vw)] gap-[calc(1vw)] items-center w-full max-w-3xl mx-auto cursor-pointer" 
+            className="grid grid-cols-[1fr,minmax(120px,15vw)] gap-[calc(1vw)] items-center w-full max-w-3xl mx-auto cursor-pointer flex justify-center relative" 
             onClick={() => onExpand(project.id)}
+            style={{
+              transform: 'translateX(-10%)',  // Adjust this value to center based on the middle of the image
+              width: 'calc(100% - 2rem)'     // Account for padding
+            }}
           >
             <div className="text-right">
               <h3 className="text-[calc(0.875rem+0.1vw)] font-medium truncate">
