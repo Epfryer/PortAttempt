@@ -29,7 +29,7 @@ export function ProjectCarousel({ project, onClose }: ProjectCarouselProps) {
     const step = () => {
       if (carouselRef.current) {
         carouselRef.current.scrollLeft += (direction === 'right' ? 1 : -1) * scrollVelocity;
-        setScrollVelocity(v => Math.min(v + 150, 1200));
+        setScrollVelocity((v: number) => Math.min(v + 150, 1200));
       }
     };
     setScrollInterval(setInterval(step, 16));
@@ -79,9 +79,21 @@ export function ProjectCarousel({ project, onClose }: ProjectCarouselProps) {
         <X size={24} />
       </button>
 
-      <div 
+      <div
         ref={carouselRef}
-        className="h-screen flex overflow-x-hidden scroll-smooth"
+        className="h-screen flex overflow-x-auto scroll-smooth snap-x snap-mandatory"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={() => setEdgeHover(null)}
+        onTouchMove={(e: React.TouchEvent<HTMLDivElement>) => 
+          handleMouseMove(e as unknown as React.MouseEvent<HTMLDivElement>)
+        }
+        onTouchEnd={() => {
+          if (scrollInterval) {
+            clearInterval(scrollInterval);
+            setScrollInterval(null);
+            setScrollVelocity(300);
+          }
+        }}
       >
         {images.map((image, index) => (
           <div 
