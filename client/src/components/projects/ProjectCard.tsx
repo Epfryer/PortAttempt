@@ -36,11 +36,11 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
     >
       <motion.div 
         layout
-        className={`relative w-full max-w-[95vw] mx-auto transition-all ${isExpanded ? "px-[calc(2vw)]" : "px-[calc(1vw)]"} py-[calc(1vh)]`}
+        className={`flex w-full max-w-[95vw] mx-auto transition-all ${isExpanded ? "px-[calc(2vw)]" : "px-[calc(1vw)]"} py-[calc(1vh)]`}
         style={{
           width: isExpanded ? '95vw' : '100%',
-          maxWidth: isExpanded ? '1400px' : 'none',
-          marginLeft: isExpanded ? '50%' : '0',
+          maxWidth: isExpanded ? '1700px' : 'none',
+          marginLeft: isExpanded ? '50' : '0',
           transform: isExpanded ? 'translateX(-50%)' : 'none'
         }}
       >
