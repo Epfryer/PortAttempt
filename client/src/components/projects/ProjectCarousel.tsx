@@ -50,7 +50,7 @@ export function ProjectCarousel({ project, onClose }: ProjectCarouselProps) {
     setZoomLevel(newZoom);
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!carouselRef.current) return;
     
     const { left, width } = carouselRef.current.getBoundingClientRect();
