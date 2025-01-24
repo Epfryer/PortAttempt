@@ -47,30 +47,25 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
         {!isExpanded ? (
           // Unexpanded view - grid layout with text on side
           <div 
-            className="grid grid-cols-[120px,1fr] gap-[4px] items-start w-full px-4 cursor-pointer ml-16" // Updated ml-16 for left margin
+            className="grid grid-cols-[120px,1fr] gap-3 items-center justify-items-end w-full px-4 cursor-pointer ml-16" 
             onClick={() => onExpand(project.id)}
           >
-            <div className="text-right space-y-2">
-              <div className="w-6 h-6 ml-auto">
-                <img 
-                  src="/logo-small.png" 
-                  alt="Project logo" 
-                  className="w-full h-full object-contain"
-                />
-              </div>
+            {/* Info Text Section - Moved to first column and right aligned */}
+            <div className="text-right">
               <h3 className="text-sm font-medium">{project.title}</h3>
-              <p className="text-xs text-gray-600">
+              <p className="text-xs text-gray-600 mt-1">
                 {project.location}
               </p>
             </div>
 
+            {/* Image Section - Moved to second column */}
             <motion.div
               className="relative aspect-video w-full max-w-sm"
               whileHover={{ scale: 0.98 }}
             >
               <img
                 src={project.image}
-                alt={project.title}
+                alt={project.title} 
                 className="w-full h-full object-cover"
               />
             </motion.div>
