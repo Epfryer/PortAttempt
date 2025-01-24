@@ -38,9 +38,10 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
         layout
         className="py-4 mx-auto flex justify-center"
         style={{
-          width: isExpanded ? '160%' : '100%',
-          marginLeft: isExpanded ? '-30%' : '0',
-          marginRight: isExpanded ? '-30%' : '0'
+          width: isExpanded ? '180%' : '100%',
+          marginLeft: isExpanded ? '-40%' : '0',
+          marginRight: isExpanded ? '-40%' : '0',
+          maxWidth: isExpanded ? 'none' : '1400px'
         }}
       >
         {!isExpanded ? (
