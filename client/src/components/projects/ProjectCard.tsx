@@ -1,6 +1,5 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { useState, useRef } from "react";
 import type { Project } from "@/lib/projects";
 
 interface ProjectCardProps {
@@ -11,45 +10,31 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
-  // Mock additional content for demo - replace with actual project content
   const content = [
     { image: project.image, text: project.description },
     { image: project.image, text: "Additional details about the project process." },
     { image: project.image, text: "More information about outcomes and impact." }
   ];
 
-  const handleNavigation = (direction: 'prev' | 'next') => {
-    setCurrentIndex(prev => {
-      if (direction === 'prev') {
-        return prev === 0 ? content.length - 1 : prev - 1;
-      }
-      return prev === content.length - 1 ? 0 : prev + 1;
-    });
-  };
-
   return (
     <motion.div 
       layout
-      className="group relative w-full overflow-hidden mb-[calc(2vh)]"
+      className="relative w-full overflow-hidden mb-[calc(2vh)]"
       initial={false}
     >
       <motion.div 
         layout
-        className={`flex w-full max-w-[95vw] mx-auto transition-all ${isExpanded ? "px-[calc(2vw)]" : "px-[calc(1vw)]"} py-[calc(1vh)]`}
-        style={{
-          width: isExpanded ? '95vw' : '100%',
-          maxWidth: isExpanded ? '1700px' : 'none',
-          marginLeft: isExpanded ? '50' : '0',
-          transform: isExpanded ? 'translateX(-50%)' : 'none'
-        }}
+        className="w-full mx-auto transition-all"
       >
         {!isExpanded ? (
+          // Non-expanded view
           <div 
-            className="grid grid-cols-[1fr,minmax(120px,15vw)] gap-[calc(1vw)] items-center w-full cursor-pointer" 
+            className="grid grid-cols-[1fr,minmax(120px,15vw)] gap-[calc(1vw)] items-center w-full max-w-3xl mx-auto cursor-pointer" 
             onClick={() => onExpand(project.id)}
           >
-            <div className="text-right w-full">
+            <div className="text-right">
               <h3 className="text-[calc(0.875rem+0.1vw)] font-medium truncate">
                 {project.title}
               </h3>
@@ -57,9 +42,8 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
                 {project.location}
               </p>
             </div>
-
             <motion.div
-              className="relative aspect-video w-full"
+              className="relative aspect-[17/11]"
               whileHover={{ scale: 0.98 }}
             >
               <img
@@ -70,86 +54,40 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
             </motion.div>
           </div>
         ) : (
-          <div className="w-full">
-            <div className="mb-[calc(1vh)]">
-              <h3 className="text-[calc(0.875rem+0.2vw)] font-medium">
-                {project.title}
-              </h3>
-              <p className="text-[calc(0.75rem+0.1vw)] text-gray-600 mt-[calc(0.5vh)]">
-                {project.location}
-              </p>
-            </div>
-
-            <div className="relative">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentIndex}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="aspect-[17/11]" // Changed from aspect-[16/9]
-                >
-                  <img
-                    src={content[currentIndex].image}
-                    alt={`${project.title} view ${currentIndex + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
-              </AnimatePresence>
-
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleNavigation('prev');
-                }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleNavigation('next');
-                }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onExpand(null);
-                  setCurrentIndex(0);
-                }}
-                className="absolute top-4 right-4 text-sm text-gray-500 hover:text-black"
-              >
-                Close
-              </button>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="mt-[calc(1vh)]"
+          // Expanded view with edge-to-edge carousel
+          <div 
+            className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]"
+            onClick={() => onExpand(null)}
+          >
+            <div 
+              ref={carouselRef}
+              className="snap-x snap-mandatory scroll-smooth flex overflow-x-auto scrollbar-hide"
             >
-              <AnimatePresence mode="wait">
-                <motion.p
-                  key={currentIndex}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  className="text-gray-600 max-w-[90ch] text-[calc(0.875rem+0.1vw)]"
+              {content.map((item, index) => (
+                <div 
+                  key={index}
+                  className="snap-center shrink-0 w-full flex flex-col items-center px-4"
                 >
-                  {content[currentIndex].text}
-                </motion.p>
-              </AnimatePresence>
-              <div className="mt-[calc(1vh)] flex gap-[calc(1vw)] text-[calc(0.75rem+0.1vw)] text-gray-500">
-                <span>{project.year}</span>
-                <span>{project.category}</span>
-              </div>
-            </motion.div>
+                  <div className="max-w-7xl w-full grid grid-cols-2 gap-8">
+                    <div className="p-8 flex flex-col justify-center">
+                      <h3 className="text-2xl font-semibold">{project.title}</h3>
+                      <p className="mt-4 text-gray-600">{item.text}</p>
+                      <div className="mt-6 flex gap-4 text-sm text-gray-500">
+                        <span>{project.year}</span>
+                        <span>{project.category}</span>
+                      </div>
+                    </div>
+                    <div className="relative aspect-[17/11]">
+                      <img
+                        src={item.image}
+                        alt={`${project.title} view ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </motion.div>
