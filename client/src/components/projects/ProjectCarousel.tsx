@@ -13,7 +13,7 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
   const handleScroll = () => {
     if (carouselRef.current) {
       const scrollPosition = carouselRef.current.scrollLeft;
-      const index = Math.round(scrollPosition / window.innerWidth);
+      const index = Math.round(scrollPosition / (carouselRef.current.offsetWidth || window.innerWidth));
       setCurrentIndex(index);
     }
   };
@@ -21,7 +21,7 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
   const scrollToIndex = (index: number) => {
     if (carouselRef.current) {
       carouselRef.current.scrollTo({
-        left: index * window.innerWidth,
+        left: index * (carouselRef.current.offsetWidth || window.innerWidth),
         behavior: 'smooth'
       });
     }
@@ -57,7 +57,7 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
   };
 
   return (
-    <div className="group relative h-[80vh] overflow-hidden">
+    <div className="group relative h-screen flex items-center overflow-hidden">
       {/* Close button */}
       <button
         onClick={handleClose}
@@ -76,7 +76,7 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
       {/* Carousel container */}
       <div 
         ref={carouselRef}
-        className="h-full snap-x snap-mandatory overflow-x-auto scroll-smooth hide-scrollbar"
+        className="h-full snap-x snap-mandatory overflow-x-auto scroll-smooth hide-scrollbar flex justify-center"
         onScroll={handleScroll}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -84,9 +84,9 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
         {projects.map((project, index) => (
           <div 
             key={project.id} 
-            className="snap-start w-screen h-full flex-shrink-0"
+            className="snap-start w-full max-w-4xl h-full flex-shrink-0 mx-auto"
           >
-            <div className="grid grid-cols-2 h-full max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 h-full w-full gap-8 px-4">
               <div className="p-8 flex flex-col justify-center">
                 <h3 className="text-2xl font-semibold">{project.title}</h3>
                 <p className="mt-4 text-gray-600">{project.description}</p>
