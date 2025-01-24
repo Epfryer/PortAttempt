@@ -18,7 +18,7 @@ export function Footer() {
             <h3 className="font-bold mb-4">Home</h3>
             <address className="text-gray-600 not-italic">
               Honolul, HI<br />
-              ..Tampa, Fl<br />
+              Tampa, Fl<br />
               Blacksburg, VA
             </address>
           </div>
