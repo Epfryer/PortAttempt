@@ -37,6 +37,11 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
       <motion.div 
         layout
         className="py-4 mx-auto max-w-4xl flex justify-center"
+        style={{
+          width: isExpanded ? '125%' : '100%', // Make expanded state 25% larger
+          marginLeft: isExpanded ? '-12.5%' : '0', // Center the expanded content
+          marginRight: isExpanded ? '-12.5%' : '0'
+        }}
       >
         {!isExpanded ? (
           // Unexpanded view - grid layout with text on side
@@ -71,7 +76,7 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
           </div>
         ) : (
           // Expanded view - full width with text below
-          <div>
+          <div className="w-full">
             <div className="mb-3">
               <h3 className="text-sm font-medium">{project.title}</h3>
               <p className="text-xs text-gray-600 mt-1">
