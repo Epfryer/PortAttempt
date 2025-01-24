@@ -40,7 +40,7 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
         style={{
           width: isExpanded ? '95vw' : '100%',
           maxWidth: isExpanded ? '1400px' : 'none',
-          marginLeft: isExpanded ? '5' : '0',
+          marginLeft: isExpanded ? '50%' : '0',
           transform: isExpanded ? 'translateX(-50%)' : 'none'
         }}
       >

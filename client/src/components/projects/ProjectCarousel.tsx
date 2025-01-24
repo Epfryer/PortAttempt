@@ -76,7 +76,7 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
       {/* Carousel container */}
       <div 
         ref={carouselRef}
-        className="h-full snap-x snap-mandatory overflow-x-auto scroll-smooth hide-scrollbar flex justify-center"
+        className="h-full snap-x snap-mandatory overflow-x-scroll scroll-smooth hide-scrollbar flex w-full justify-center"
         onScroll={handleScroll}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -84,9 +84,9 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
         {projects.map((project, index) => (
           <div 
             key={project.id} 
-            className="snap-start w-full max-w-4xl h-full flex-shrink-0 mx-auto"
+            className="snap-center w-full max-w-4xl h-full flex-shrink-0 mx-auto px-4"
           >
-            <div className="grid grid-cols-2 h-full w-full gap-8 px-4">
+            <div className="grid grid-cols-2 h-full w-full gap-8">
               <div className="p-8 flex flex-col justify-center">
                 <h3 className="text-2xl font-semibold">{project.title}</h3>
                 <p className="mt-4 text-gray-600">{project.description}</p>
