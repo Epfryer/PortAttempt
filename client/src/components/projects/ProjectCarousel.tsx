@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { X } from "lucide-react";
 import type { Project } from "@/lib/projects";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import * as React from "react";
 
 interface ProjectCarouselProps {
   project: Project;
@@ -9,8 +10,12 @@ interface ProjectCarouselProps {
 }
 
 export function ProjectCarousel({ project, onClose }: ProjectCarouselProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const [edgeHover, setEdgeHover] = useState<'left'|'right'|null>(null);
+  const [scrollInterval, setScrollInterval] = useState<ReturnType<typeof setInterval>|null>(null);
+  const [scrollVelocity, setScrollVelocity] = useState(300);
+  const [zoomLevel, setZoomLevel] = useState(1);
+  const [zoomOrigin, setZoomOrigin] = useState({ x: 0, y: 0 });
 
   // Mock additional images for demo - replace with actual project images
   const images = [project.image, project.image, project.image];
@@ -20,17 +25,45 @@ export function ProjectCarousel({ project, onClose }: ProjectCarouselProps) {
     "More information about the project process and outcomes."
   ];
 
-  const handleScroll = (direction: 'prev' | 'next') => {
-    const newIndex = direction === 'prev' 
-      ? Math.max(0, currentIndex - 1)
-      : Math.min(images.length - 1, currentIndex + 1);
-    
-    setCurrentIndex(newIndex);
-    carouselRef.current?.scrollTo({
-      left: newIndex * window.innerWidth,
-      behavior: 'smooth'
-    });
+  const handleEdgeScroll = (direction: 'left'|'right') => {
+    const step = () => {
+      if (carouselRef.current) {
+        carouselRef.current.scrollLeft += (direction === 'right' ? 1 : -1) * scrollVelocity;
+        setScrollVelocity(v => Math.min(v + 150, 1200));
+      }
+    };
+    setScrollInterval(setInterval(step, 16));
   };
+
+  const handleZoom = (e: React.WheelEvent<HTMLDivElement>) => {
+    if (edgeHover) return;
+    
+    const delta = e.deltaY * -0.002;
+    const newZoom = Math.min(Math.max(zoomLevel + delta, 1), 3);
+    
+    const rect = e.currentTarget.getBoundingClientRect();
+    setZoomOrigin({
+      x: (e.clientX - rect.left) / rect.width,
+      y: (e.clientY - rect.top) / rect.height
+    });
+    
+    setZoomLevel(newZoom);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!carouselRef.current) return;
+    
+    const { left, width } = carouselRef.current.getBoundingClientRect();
+    const position = ((e.clientX - left) / width) * 100;
+    
+    setEdgeHover(position < 10 ? 'left' : position > 90 ? 'right' : null);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (scrollInterval) clearInterval(scrollInterval);
+    };
+  }, [scrollInterval]);
 
   return (
     <motion.div
@@ -89,32 +122,21 @@ export function ProjectCarousel({ project, onClose }: ProjectCarouselProps) {
         ))}
       </div>
 
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex gap-4">
-        <button
-          onClick={() => handleScroll('prev')}
-          disabled={currentIndex === 0}
-          className="p-2 hover:opacity-70 transition-opacity disabled:opacity-30"
-        >
-          <ChevronLeft size={24} />
-        </button>
-        <div className="flex gap-2 items-center">
-          {images.map((_, index) => (
-            <div
-              key={index}
-              className={`w-2 h-2 rounded-full transition-colors ${
-                index === currentIndex ? 'bg-black' : 'bg-gray-300'
-              }`}
-            />
-          ))}
+      {/* Edge scroll indicators and zoom controls */}
+      {edgeHover && (
+        <div className="fixed inset-0 flex justify-between pointer-events-none">
+          <div className="w-1/5 h-full bg-gradient-to-r from-black/5 to-transparent" />
+          <div className="w-1/5 h-full bg-gradient-to-l from-black/5 to-transparent" />
         </div>
-        <button
-          onClick={() => handleScroll('next')}
-          disabled={currentIndex === images.length - 1}
-          className="p-2 hover:opacity-70 transition-opacity disabled:opacity-30"
-        >
-          <ChevronRight size={24} />
-        </button>
-      </div>
+      )}
+      
+      <motion.div 
+        className="fixed bottom-6 left-1/2 -translate-x-1/2 text-sm text-gray-500 bg-white/80 backdrop-blur px-4 py-2 rounded-full"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
+        Scroll near edges to navigate • Wheel to zoom
+      </motion.div>
     </motion.div>
   );
 }
