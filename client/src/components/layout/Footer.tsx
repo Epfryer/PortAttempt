@@ -6,19 +6,20 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="font-bold mb-4">BIG</h3>
+            <h3 className="font-bold mb-4">D.EF</h3>
             <p className="text-gray-600">
-              Bjarke Ingels Group<br />
-              Architecture & Design
+              Ethan Fryer<br />
+              Virginia Tech AAD '25 <br />
+              B.Arch Candidate'
             </p>
           </div>
           
           <div>
-            <h3 className="font-bold mb-4">Contact</h3>
+            <h3 className="font-bold mb-4">Home</h3>
             <address className="text-gray-600 not-italic">
-              49 Kløverbladsgade<br />
-              DK-2500 Copenhagen<br />
-              Denmark
+              Honolul, HI<br />
+              ..Tampa, Fl<br />
+              Blacksburg, VA
             </address>
           </div>
 
@@ -37,7 +38,7 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-gray-200">
           <p className="text-sm text-gray-500">
-            © {new Date().getFullYear()} BIG. All rights reserved.
+            © {new Date().getFullYear()} D.EF. All rights reserved.
           </p>
         </div>
       </div>
