@@ -36,31 +36,31 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
     >
       <motion.div 
         layout
-        className="py-4 mx-auto flex justify-center"
+        className="py-4 w-screen max-w-[90vw] mx-auto"
         style={{
-          width: isExpanded ? '180%' : '100%',
-          marginLeft: isExpanded ? '-40%' : '0',
-          marginRight: isExpanded ? '-40%' : '0',
-          maxWidth: isExpanded ? 'none' : '1400px'
+          width: isExpanded ? '90vw' : '100%',
+          maxWidth: isExpanded ? '1400px' : 'none',
+          marginLeft: isExpanded ? '50%' : '0',
+          transform: isExpanded ? 'translateX(-50%)' : 'none'
         }}
       >
         {!isExpanded ? (
           // Unexpanded view - grid layout with text on side
           <div 
-            className="grid grid-cols-[120px,1fr] gap-3 items-center justify-items-end w-full px-4 cursor-pointer ml-16" 
+            className="grid grid-cols-[1fr,120px] gap-3 items-center justify-items-end w-full px-4 cursor-pointer" 
             onClick={() => onExpand(project.id)}
           >
-            {/* Info Text Section - Moved to first column and right aligned */}
-            <div className="text-right">
-              <h3 className="text-sm font-medium">{project.title}</h3>
-              <p className="text-xs text-gray-600 mt-1">
+            {/* Info Text Section - Right aligned */}
+            <div className="text-right w-full">
+              <h3 className="text-sm font-medium truncate">{project.title}</h3>
+              <p className="text-xs text-gray-600 mt-1 truncate">
                 {project.location}
               </p>
             </div>
 
-            {/* Image Section - Moved to second column */}
+            {/* Image Section - Fixed width container but responsive image */}
             <motion.div
-              className="relative aspect-video w-full max-w-sm"
+              className="relative aspect-video w-[120px]"
               whileHover={{ scale: 0.98 }}
             >
               <img

@@ -8,23 +8,24 @@ export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   
   return (
-    <>
+    <div className="max-w-3xl mx-auto px-6" style={{ opacity: 1 }}>
       <div className="flex justify-center mb-12">
         <div className="flex flex-wrap justify-center gap-4 mb-8">
           {/* ...filter buttons... */}
         </div>
       </div>
-      
-      <div className="w-full">
-        {filteredProjects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            isExpanded={expandedId === project.id}
-            onExpand={setExpandedId}
-          />
-        ))}
+      <div style={{ opacity: 1 }}>
+        <div className="space-y-0">
+          {filteredProjects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              isExpanded={expandedId === project.id}
+              onExpand={setExpandedId}
+            />
+          ))}
+        </div>
       </div>
-    </>
+    </div>
   );
 }
