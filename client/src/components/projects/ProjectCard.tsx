@@ -72,16 +72,16 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
                   key={index}
                   className="snap-center shrink-0 w-full flex flex-col items-center px-4"
                 >
-                  <div className="max-w-7xl w-full grid grid-cols-2 gap-8">
-                    <div className="p-8 flex flex-col justify-center">
-                      <h3 className="text-2xl font-semibold">{project.title}</h3>
-                      <p className="mt-4 text-gray-600">{item.text}</p>
-                      <div className="mt-6 flex gap-4 text-sm text-gray-500">
+                  <div className="max-w-7xl w-full grid grid-cols-[minmax(220px,30%),1fr] gap-8">
+                    <div className="p-4 max-w-[220px]">
+                      <h3 className="text-lg font-semibold">{project.title}</h3>
+                      <p className="mt-2 text-sm text-gray-600">{item.text}</p>
+                      <div className="mt-4 flex gap-4 text-sm text-gray-500">
                         <span>{project.year}</span>
                         <span>{project.category}</span>
                       </div>
                     </div>
-                    <div className="relative aspect-[17/11]">
+                    <div className="relative w-full aspect-[17/11]">
                       <img
                         src={item.image}
                         alt={`${project.title} view ${index + 1}`}
