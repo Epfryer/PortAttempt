@@ -1,3 +1,4 @@
+
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 interface ProjectContextType {
@@ -14,16 +15,18 @@ export function ProjectProvider({ children }: { children: ReactNode }) {
   const [shouldRevealHeader, setShouldRevealHeader] = useState(false);
 
   useEffect(() => {
-    // Reset header state whenever project expand state changes
+    // Reset header state when project expand state changes
     setShouldRevealHeader(false);
 
     const handleScroll = () => {
       if (!isProjectExpanded) return;
-      setShouldRevealHeader(true);
+      setShouldRevealHeader(window.scrollY > 100);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    if (isProjectExpanded) {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
   }, [isProjectExpanded]);
 
   return (
