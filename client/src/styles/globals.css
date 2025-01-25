@@ -99,18 +99,20 @@ h3, p {
   display: none;
 }
 
-.fixed-text-widget {
-  position: fixed;
-  left: 60vw;
+/* Remove old fixed-text-widget styles */
+
+.text-widget-container {
+  position: absolute;
+  left: calc(var(--project-expanded-width) * 0.3);
   top: 50%;
   transform: translateY(-50%);
   width: 300px;
   z-index: 40;
   padding: 2rem;
-  transition: transform 0.3s ease-in-out;
+  pointer-events: none;
 }
 
-.fixed-text-widget .text-content {
+.text-widget-container .text-content {
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
 }
@@ -126,7 +128,7 @@ h3, p {
     width: 80px !important;
   }
 
-  .fixed-text-widget {
+  .text-widget-container {
     position: relative;
     left: 0;
     top: 0;
