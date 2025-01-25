@@ -14,7 +14,7 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
   const [currentIndex, setCurrentIndex] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
-  const { setProjectExpanded } = useProject();
+  const { setProjectExpanded, setShouldRevealHeader } = useProject();
 
   useEffect(() => {
     setProjectExpanded(isExpanded);
