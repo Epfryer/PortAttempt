@@ -99,12 +99,12 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
                 <span>{initialSlide.category}</span>
               </div>
             </div>
-            <div className="flex items-center justify-center h-[calc(100vh-200px)]">
-              <div className="relative w-full h-full">
+            <div className="flex items-center justify-center max-h-[80vh]">
+              <div className="w-full h-full max-h-[80vh]">
                 <img
                   src={images[0]}
                   alt={`Slide 1`}
-                  className="absolute inset-0 w-full h-full object-scale-down"
+                  className="w-full h-auto object-contain"
                 />
               </div>
             </div>
@@ -123,12 +123,12 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
             }}
             className="sm:max-w-[95%] md:max-w-[90%] lg:max-w-[85%]"
           >
-            <div className="flex items-center justify-center h-[calc(100vh-200px)]">
-              <div className="relative w-full h-full">
+            <div className="flex items-center justify-center h-full max-h-[80vh]">
+              <div className="w-full h-full max-h-[80vh]">
                 <img
                   src={image}
                   alt={`Slide ${index + 2}`}
-                  className="absolute inset-0 w-full h-full object-scale-down"
+                  className="w-full h-auto object-contain"
                 />
               </div>
             </div>
