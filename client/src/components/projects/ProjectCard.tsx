@@ -18,21 +18,34 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
 
   useEffect(() => {
     setProjectExpanded(isExpanded);
-
+    
     if (isExpanded && cardRef.current) {
       const cardElement = cardRef.current;
       const viewportHeight = window.innerHeight;
       const cardRect = cardElement.getBoundingClientRect();
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
       const targetY = scrollTop + cardRect.top - (viewportHeight - cardRect.height) / 2;
 
       window.scrollTo({
         top: targetY,
         behavior: 'smooth'
       });
+
+      // Handle header animation
+      const handleScroll = () => {
+        const scrollPosition = window.scrollY;
+        const shouldReveal = scrollPosition > 100;
+        setProjectExpanded(true);
+        setShouldRevealHeader(shouldReveal);
+      };
+
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+        setShouldRevealHeader(false);
+      };
     }
-  }, [isExpanded, setProjectExpanded]);
+  }, [isExpanded, setProjectExpanded, setShouldRevealHeader]);
 
   const handleExpand = () => {
     onExpand(project.id);

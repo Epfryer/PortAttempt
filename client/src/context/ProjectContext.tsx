@@ -14,21 +14,6 @@ export function ProjectProvider({ children }: { children: ReactNode }) {
   const [isProjectExpanded, setProjectExpanded] = useState(false);
   const [shouldRevealHeader, setShouldRevealHeader] = useState(false);
 
-  useEffect(() => {
-    // Reset header state when project expand state changes
-    setShouldRevealHeader(false);
-
-    const handleScroll = () => {
-      if (!isProjectExpanded) return;
-      setShouldRevealHeader(window.scrollY > 100);
-    };
-
-    if (isProjectExpanded) {
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      return () => window.removeEventListener('scroll', handleScroll);
-    }
-  }, [isProjectExpanded]);
-
   return (
     <ProjectContext.Provider value={{ 
       isProjectExpanded, 
