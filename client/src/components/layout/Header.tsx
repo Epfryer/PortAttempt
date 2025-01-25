@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { Menu, X } from "lucide-react";
 import { useProject } from "@/context/ProjectContext";
 import { motion } from "framer-motion";
+import { TypingAnimation } from "@/components/ui/typing-animation";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,20 +29,27 @@ export function Header() {
                 delay: 0.2
               }}
             >
-              <motion.span
-                initial={{ display: "inline-block" }}
-                animate={{ 
-                  opacity: [0, 1],
-                  y: [20, 0]
-                }}
-                transition={{
-                  duration: 0.5,
-                  ease: "easeOut",
-                  delay: 0.4
-                }}
-              >
-                D.EF
-              </motion.span>
+              {isProjectExpanded && !shouldRevealHeader ? (
+                <div className="flex items-baseline gap-2">
+                  <span className="text-lg">Designed by</span>
+                  <TypingAnimation text="Ethan Fryer" speed={50} delay={200} />
+                </div>
+              ) : (
+                <motion.span
+                  initial={{ display: "inline-block" }}
+                  animate={{ 
+                    opacity: [0, 1],
+                    y: [20, 0]
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    ease: "easeOut",
+                    delay: 0.4
+                  }}
+                >
+                  D.EF
+                </motion.span>
+              )}
             </motion.a>
           </Link>
         </div>
