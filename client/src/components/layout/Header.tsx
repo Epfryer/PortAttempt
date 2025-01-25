@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "wouter";
 import { Menu, X } from "lucide-react";
 import { useProject } from "@/context/ProjectContext";
+import { motion } from "framer-motion";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
