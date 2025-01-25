@@ -10,6 +10,18 @@ interface ProjectCardProps {
   onExpand: (id: string | null) => void;
 }
 
+// Image optimization utility function (example implementation)
+const getOptimizedImageUrl = (imageUrl: string): string => {
+  // Implement your image optimization logic here.  This could involve:
+  // - Using a CDN with image resizing capabilities.
+  // - Using a serverless function to resize images on demand.
+  // - Using a library like sharp to optimize images on the client-side.
+
+  // For this example, we'll just return the original URL.  Replace this with your actual optimization logic.
+  return imageUrl;
+};
+
+
 export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -18,7 +30,7 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
 
   useEffect(() => {
     setProjectExpanded(isExpanded);
-    
+
     if (isExpanded && cardRef.current) {
       const cardElement = cardRef.current;
       const viewportHeight = window.innerHeight;
@@ -32,16 +44,16 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
       });
 
       let lastScrollY = window.scrollY;
-      
+
       // Handle header animation
       const handleScroll = () => {
         const currentScrollY = window.scrollY;
         const scrollDelta = Math.abs(currentScrollY - lastScrollY);
-        
+
         if (scrollDelta > 5) {
           setShouldRevealHeader(true);
         }
-        
+
         lastScrollY = currentScrollY;
       };
 
@@ -92,9 +104,10 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
                 transition={{ duration: 0.3 }}
               >
                 <img
-                  src={project.image}
+                  src={getOptimizedImageUrl(project.image)}
                   alt={project.title}
                   className="w-full h-auto object-contain rounded-sm"
+                  loading="lazy"
                 />
               </motion.div>
             </div>
