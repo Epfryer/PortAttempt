@@ -6,8 +6,7 @@
 
 .project-carousel {
   --aspect-ratio: calc(11 / 17);
-  --carousel-height: min(85vh, calc(100vw * var(--aspect-ratio)));
-  --slide-width: min(90vw, calc(var(--carousel-height) * (17/11)));
+  --carousel-height: min(80vh, calc(100vw * var(--aspect-ratio)));
   
   overflow: visible !important;
   padding-bottom: 48px;
@@ -103,22 +102,6 @@ h3, p {
 
 /* Remove old fixed-text-widget styles */
 
-.text-widget-container {
-  position: absolute;
-  left: calc(var(--project-expanded-width) * 0.3);
-  top: 50%;
-  transform: translateY(-50%);
-  width: 300px;
-  z-index: 40;
-  padding: 2rem;
-  pointer-events: none;
-}
-
-.text-widget-container .text-content {
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out;
-}
-
 @media (max-width: 768px) {
   .project-carousel {
     padding-bottom: 32px;
@@ -128,16 +111,6 @@ h3, p {
 
   .project-carousel .swiper-scrollbar {
     width: 80px !important;
-  }
-
-  .text-widget-container {
-    position: relative;
-    left: 0;
-    top: 0;
-    transform: none;
-    width: 100%;
-    padding: 1rem;
-    margin-bottom: 1rem;
   }
 }
 
