@@ -13,9 +13,11 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
 
+  // Create dummy content with the same image repeated
   const content = [
     { image: project.image, text: project.description },
-    ...(project.relatedProjects || []).map(p => ({ image: p.image, text: "" }))
+    { image: project.image, text: "" },  // Second copy
+    { image: project.image, text: "" },  // Third copy
   ];
 
   return (
