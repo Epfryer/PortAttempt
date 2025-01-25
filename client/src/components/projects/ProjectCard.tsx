@@ -71,7 +71,7 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
                   <span>{project.category}</span>
                 </div>
               </div>
-              <div className="relative">
+              <div className="relative h-[60vh]">  {/* Added fixed height */}
                 <ProjectCarousel 
                   images={content.map(item => item.image)}
                   onSlideChange={setCurrentIndex}

@@ -15,17 +15,16 @@ export function ProjectCarousel({ images, onSlideChange }: ProjectCarouselProps)
   return (
     <Swiper
       modules={[Scrollbar]}
-      slidesPerView="auto"
+      slidesPerView={1}  // Changed to 1 to ensure consistent sizing
       scrollbar={{ draggable: true }}
       spaceBetween={0}
-      className="w-full h-full"
+      className="w-full aspect-[16/9]"  // Added aspect ratio
       onSlideChange={(swiper: SwiperType) => onSlideChange?.(swiper.activeIndex)}
     >
       {images.map((image, index) => (
         <SwiperSlide 
           key={index} 
-          style={{ width: '100%' }}
-          className="h-full aspect-[16/9]"
+          className="w-full h-full"  // Simplified class
         >
           <img
             src={image}
