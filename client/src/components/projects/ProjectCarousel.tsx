@@ -85,32 +85,21 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
         <SwiperSlide 
           style={{
             width: 'auto',
-            maxWidth: '90%',
             height: '100%',
-            marginLeft: '5%',
-            margin: 0,
-            padding: 0
+            aspectRatio: '3/2',
+            marginLeft: '5%'
           }}
-          className="sm:max-w-flex "
+          className="sm:max-w-[95%] md:max-w-[90%] lg:max-w-[85%] flex items-center justify-center"
         >
-          <div className="grid grid-cols-1 md:grid-cols-[400px,1fr] gap-4 h-full">
-            <div className="pl-8 pt-8 pr-4">
-              <h3 className="text-xl font-semibold mb-3">{initialSlide.title}</h3>
-              <p className="mt-2 text-sm text-gray-600 mb-4">{initialSlide.description}</p>
-              <div className="mt-3 flex gap-4 text-sm text-gray-500">
-                <span>{initialSlide.year}</span>
-                <span>{initialSlide.category}</span>
-              </div>
-            </div>
-            <div className="flex items-center justify-center">
-              <div className="w-full">
-                <img
-                  src={images[0]}
-                  alt={`Slide 1`}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-            </div>
+          <div className="w-full h-full flex items-center justify-center">
+            <img
+              src={images[0]}
+              alt={`Slide 1`}
+              className="w-full h-full object-cover"
+              style={{
+                aspectRatio: '3/2'
+              }}
+            />
           </div>
         </SwiperSlide>
 
@@ -120,21 +109,21 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
             key={index + 1}
             style={{
               width: 'auto',
-              maxWidth: '100%',
               height: '100%',
-              margin: 0,
-              padding: 0
+              aspectRatio: '3/2',
+              marginLeft: index === 0 ? '5%' : '0'
             }}
-            className="sm:max-w-[95%] md:max-w-[90%] lg:max-w-[85%]"
+            className="sm:max-w-[95%] md:max-w-[90%] lg:max-w-[85%] flex items-center justify-center"
           >
-            <div className="flex items-center justify-center h-full">
-              <div className="w-full">
-                <img
-                  src={image}
-                  alt={`Slide ${index + 2}`}
-                  className="w-full h-full object-contain"
-                />
-              </div>
+            <div className="w-full h-full flex items-center justify-center">
+              <img
+                src={image}
+                alt={`Slide ${index + 2}`}
+                className="w-full h-full object-cover"
+                style={{
+                  aspectRatio: '3/2'
+                }}
+              />
             </div>
           </SwiperSlide>
         ))}

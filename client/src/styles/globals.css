@@ -15,12 +15,16 @@
   padding: 0 !important;
   margin: 0 !important;
   width: 100% !important;
+  aspect-ratio: 3/2;
+  height: 100% !important;
 }
 
 .project-carousel .swiper-wrapper {
   width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
+  height: 100% !important;
+  aspect-ratio: 3/2;
 }
 
 .project-carousel .swiper-slide {
@@ -29,6 +33,10 @@
   width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
+  aspect-ratio: 3/2;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .project-carousel img {
