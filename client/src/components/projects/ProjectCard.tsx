@@ -13,57 +13,54 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  // Create dummy content with the same image repeated
   const content = [
     { image: project.image, text: project.description },
-    { image: project.image, text: "" },  // Second copy
-    { image: project.image, text: "" },  // Third copy
+    { image: project.image, text: "" },
+    { image: project.image, text: "" },
   ];
 
   return (
     <motion.div 
       layout
-      className="relative w-full overflow-hidden mb-[calc(2vh)]"
+      className="relative w-full overflow-hidden mb-4"
       initial={false}
     >
       <motion.div 
         layout
-        className="w-full mx-auto transition-all"
+        className="w-full mx-auto transition-all duration-300"
       >
         {!isExpanded ? (
-          // Non-expanded view
+          // Centered non-expanded view
           <div 
-            className="grid grid-cols-[1fr,minmax(120px,15vw)] gap-[calc(1vw)] items-center w-full max-w-3xl mx-auto cursor-pointer flex justify-center relative" 
+            className="container mx-auto max-w-3xl px-4 cursor-pointer" 
             onClick={() => onExpand(project.id)}
-            style={{
-              transform: 'translateX(-10%)',  // Adjust this value to center based on the middle of the image
-              width: 'calc(100% - 2rem)'     // Account for padding
-            }}
           >
-            <div className="text-right">
-              <h3 className="text-[calc(0.875rem+0.1vw)] font-medium truncate">
-                {project.title}
-              </h3>
-              <p className="text-[calc(0.75rem+0.1vw)] text-gray-600 mt-[calc(0.25vh)] truncate">
-                {project.location}
-              </p>
+            <div className="flex items-center justify-center gap-8">
+              <div className="flex-1 text-right">
+                <h3 className="text-[calc(0.875rem+0.1vw)] font-medium truncate">
+                  {project.title}
+                </h3>
+                <p className="text-[calc(0.75rem+0.1vw)] text-gray-600 mt-1 truncate">
+                  {project.location}
+                </p>
+              </div>
+              <motion.div
+                className="w-[200px] relative aspect-[17/11]"
+                whileHover={{ scale: 0.98 }}
+              >
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover rounded-sm"
+                />
+              </motion.div>
             </div>
-            <motion.div
-              className="relative aspect-[17/11]"
-              whileHover={{ scale: 0.98 }}
-            >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
           </div>
         ) : (
           // Expanded view with edge-to-edge carousel
           <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
             <div ref={carouselRef} className="max-w-7xl mx-auto grid grid-cols-[minmax(200px,25%),1fr] gap-4 p-4">
-              <div className="p-4 max-w-[200px]">
+              <div className="p-4">
                 <h3 className="text-lg font-semibold">{project.title}</h3>
                 <p className="mt-2 text-sm text-gray-600">{content[currentIndex].text}</p>
                 <div className="mt-4 flex gap-4 text-sm text-gray-500">
@@ -71,7 +68,7 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
                   <span>{project.category}</span>
                 </div>
               </div>
-              <div className="relative h-[60vh]">  {/* Added fixed height */}
+              <div className="relative h-[60vh]">
                 <ProjectCarousel 
                   images={content.map(item => item.image)}
                   onSlideChange={setCurrentIndex}

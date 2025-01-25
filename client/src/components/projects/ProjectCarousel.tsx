@@ -1,8 +1,12 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Scrollbar } from 'swiper/modules';
-import type { Swiper as SwiperType } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/scrollbar';
+import { useCallback, useEffect, useState } from "react";
+import type { CarouselApi } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface ProjectCarouselProps {
   images: string[];
@@ -10,29 +14,38 @@ interface ProjectCarouselProps {
 }
 
 export function ProjectCarousel({ images, onSlideChange }: ProjectCarouselProps) {
+  const [api, setApi] = useState<CarouselApi>();
+
+  useEffect(() => {
+    if (!api) return;
+
+    api.on("select", () => {
+      onSlideChange?.(api.selectedScrollSnap());
+    });
+  }, [api, onSlideChange]);
+
   if (!images?.length) return null;
 
   return (
-    <Swiper
-      modules={[Scrollbar]}
-      slidesPerView={1}  // Changed to 1 to ensure consistent sizing
-      scrollbar={{ draggable: true }}
-      spaceBetween={0}
-      className="w-full aspect-[16/9]"  // Added aspect ratio
-      onSlideChange={(swiper: SwiperType) => onSlideChange?.(swiper.activeIndex)}
+    <Carousel
+      className="w-full h-full"
+      setApi={setApi}
     >
-      {images.map((image, index) => (
-        <SwiperSlide 
-          key={index} 
-          className="w-full h-full"  // Simplified class
-        >
-          <img
-            src={image}
-            alt={`Slide ${index + 1}`}
-            className="w-full h-full object-cover"
-          />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+      <CarouselContent>
+        {images.map((image, index) => (
+          <CarouselItem key={index}>
+            <div className="h-full w-full relative">
+              <img
+                src={image}
+                alt={`Slide ${index + 1}`}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
   );
 }
