@@ -28,7 +28,7 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
   if (!images?.length) return null;
 
   return (
-    <div className="relative h-full pb-12">
+    <div className="relative w-full overflow-hidden">
       <Swiper
         modules={[Navigation, Scrollbar, FreeMode, A11y]}
         slidesPerView="auto"
@@ -102,6 +102,7 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
                 <img
                   src={images[0]}
                   alt={`Slide 1`}
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
@@ -122,6 +123,7 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
               <img
                 src={image}
                 alt={`Slide ${index + 2}`}
+                className="w-full h-full object-cover"
                 loading="lazy"
               />
             </div>

@@ -40,6 +40,9 @@
   margin: 0 !important;
   padding: 0;
   height: var(--carousel-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .project-carousel .swiper-slide-active {
