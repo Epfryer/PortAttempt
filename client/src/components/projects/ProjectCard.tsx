@@ -10,60 +10,53 @@ interface ProjectCardProps {
   onExpand: (id: string | null) => void;
 }
 
-// Image optimization utility function (example implementation)
-const getOptimizedImageUrl = (imageUrl: string): string => {
-  // Implement your image optimization logic here.  This could involve:
-  // - Using a CDN with image resizing capabilities.
-  // - Using a serverless function to resize images on demand.
-  // - Using a library like sharp to optimize images on the client-side.
-
-  // For this example, we'll just return the original URL.  Replace this with your actual optimization logic.
-  return imageUrl;
-};
-
-
 export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
-  const { setProjectExpanded, setShouldRevealHeader } = useProject();
+  const { 
+    setProjectExpanded, 
+    setHeaderState, 
+    headerStates,
+    currentProjectId,
+    setCurrentProjectId
+  } = useProject();
 
   useEffect(() => {
     setProjectExpanded(isExpanded);
+    if (isExpanded) {
+      setCurrentProjectId(project.id);
 
-    if (isExpanded && cardRef.current) {
       const cardElement = cardRef.current;
-      const viewportHeight = window.innerHeight;
-      const cardRect = cardElement.getBoundingClientRect();
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const targetY = scrollTop + cardRect.top - (viewportHeight - cardRect.height) / 2;
+      if (cardElement) {
+        const viewportHeight = window.innerHeight;
+        const cardRect = cardElement.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const targetY = scrollTop + cardRect.top - (viewportHeight - cardRect.height) / 2;
 
-      window.scrollTo({
-        top: targetY,
-        behavior: 'smooth'
-      });
+        // Store initial header state for this project
+        setHeaderState(project.id, {
+          isVisible: true,
+          scrollPosition: targetY
+        });
 
-      let lastScrollY = window.scrollY;
-
-      // Handle header animation
-      const handleScroll = () => {
-        const currentScrollY = window.scrollY;
-        const scrollDelta = Math.abs(currentScrollY - lastScrollY);
-
-        if (scrollDelta > 5) {
-          setShouldRevealHeader(true);
-        }
-
-        lastScrollY = currentScrollY;
-      };
-
-      window.addEventListener('scroll', handleScroll);
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-        setShouldRevealHeader(false);
-      };
+        window.scrollTo({
+          top: targetY,
+          behavior: 'smooth'
+        });
+      }
+    } else if (!isExpanded && currentProjectId === project.id) {
+      setCurrentProjectId(null);
+      // Restore previous scroll position when closing
+      const state = headerStates.get(project.id);
+      if (state) {
+        window.scrollTo({
+          top: state.scrollPosition,
+          behavior: 'smooth'
+        });
+      }
     }
-  }, [isExpanded, setProjectExpanded, setShouldRevealHeader]);
+  }, [isExpanded, setProjectExpanded, project.id, setHeaderState, currentProjectId, setCurrentProjectId, headerStates]);
 
   const handleExpand = () => {
     onExpand(project.id);
@@ -104,7 +97,7 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
                 transition={{ duration: 0.3 }}
               >
                 <img
-                  src={getOptimizedImageUrl(project.image)}
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-auto object-contain rounded-sm"
                   loading="lazy"
