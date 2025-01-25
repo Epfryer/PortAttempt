@@ -8,8 +8,8 @@ export function Header() {
   const { isProjectExpanded, shouldRevealHeader } = useProject();
 
   const navStyle = {
-    opacity: isProjectExpanded ? 0 : 1,
-    transform: isProjectExpanded ? 'translateX(-100px)' : 'none',
+    opacity: isProjectExpanded ? (shouldRevealHeader ? 1 : 0) : 1,
+    transform: isProjectExpanded ? (shouldRevealHeader ? 'none' : 'translateX(-100px)') : 'none',
     transition: 'opacity 0.3s ease, transform 0.3s ease',
   };
 
