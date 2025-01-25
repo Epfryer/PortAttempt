@@ -17,6 +17,14 @@
 
 .project-carousel .swiper-slide {
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  height: auto !important;
+}
+
+.project-carousel img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .project-carousel .swiper-slide-active {
