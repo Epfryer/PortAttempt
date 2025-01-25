@@ -17,7 +17,31 @@ export function Header() {
       <div>
         <div className="flex items-start">
           <Link href="/">
-            <a className="text-2xl font-bold">D.EF</a>
+            <motion.a 
+              className="text-2xl font-bold inline-block"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                duration: 0.8,
+                ease: "easeInOut",
+                delay: 0.2
+              }}
+            >
+              <motion.span
+                initial={{ display: "inline-block" }}
+                animate={{ 
+                  opacity: [0, 1],
+                  y: [20, 0]
+                }}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeOut",
+                  delay: 0.4
+                }}
+              >
+                D.EF
+              </motion.span>
+            </motion.a>
           </Link>
         </div>
 
