@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import type { Project } from "@/lib/projects";
 import { ProjectCarousel } from "./ProjectCarousel";
 import { useProject } from "@/context/ProjectContext";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 interface ProjectCardProps {
   project: Project;
@@ -41,55 +42,57 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
     <motion.div 
       ref={cardRef}
       layout="position"
-      className={`relative w-full overflow-hidden mb-4 ${
-        isExpanded ? 'project-card-expanded' : ''
+      className={`relative w-full mx-auto px-4 sm:px-6 lg:px-8 mb-8 ${
+        isExpanded ? 'fixed inset-x-0 top-1/2 -translate-y-1/2 z-50' : ''
       }`}
       initial={false}
     >
       <motion.div 
         layout="position"
         className={`w-full mx-auto transition-all duration-500 ease-in-out ${
-          isExpanded ? 'max-w-none' : 'max-w-3xl'
+          isExpanded ? 'max-w-7xl' : 'max-w-3xl'
         }`}
       >
         {!isExpanded ? (
           <motion.div 
-            className="container mx-auto max-w-3xl px-4 cursor-pointer" 
+            className="w-full cursor-pointer" 
             onClick={handleExpand}
             whileHover={{ scale: 0.99 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+            <div className="flex flex-col md:flex-row items-center gap-6">
               <motion.div 
-                className="flex-1 text-center md:text-right"
+                className="w-full md:w-1/2 text-center md:text-right space-y-2"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
               >
-                <h3 className="text-[calc(0.875rem+0.1vw)] font-medium truncate transition-all duration-300 ease-in-out">
+                <h3 className="text-lg md:text-xl font-medium">
                   {project.title}
                 </h3>
-                <p className="text-[calc(0.75rem+0.1vw)] text-gray-600 mt-1 truncate transition-all duration-300 ease-in-out">
+                <p className="text-sm md:text-base text-gray-600">
                   {project.location}
                 </p>
               </motion.div>
               <motion.div 
-                className="relative w-full md:w-[280px]"
+                className="w-full md:w-1/2"
                 whileHover={{ scale: 0.98 }}
                 transition={{ duration: 0.3 }}
               >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-auto object-contain rounded-sm transition-transform duration-300 ease-in-out"
-                />
+                <AspectRatio ratio={4/3} className="overflow-hidden rounded-sm">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                </AspectRatio>
               </motion.div>
             </div>
           </motion.div>
         ) : (
-          <div ref={carouselRef} className="relative w-screen -ml-[50vw] left-1/2">
+          <div className="w-full max-h-[90vh] overflow-y-auto">
             <motion.div 
-              className="h-[80vh] max-h-[800px]"
+              className="relative aspect-[16/9] w-full"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
