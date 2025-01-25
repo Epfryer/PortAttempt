@@ -11,14 +11,14 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: "copenhill",
-    title: "Copenhill",
-    location: "Copenhagen, Denmark",
-    year: 2019,
-    description: "A waste-to-energy plant topped with a public ski slope, hiking trail and climbing wall.",
+    id: "Corp0rate-Circus",
+    title: "Corp0rate-Circus",
+    location: "Capri, Italy",
+    year: "3rd Year B.arch Final",
+    description: "For whom, no one knows nor cares, lies the designer forced to meet desires of disconected thoughts of corporate greed, I mean..., Uhh Thats akward that was for my creative Writing Course, Welcome to Italys Newest Attraction, the Great American Corporate Circus ",
     image: "https://res.cloudinary.com/dtxqagii0/image/upload/v1737825039/proj_304_c5eccf.png",  // Updated Cloudinary URL
-    category: "Infrastructure",
-    metadata: ["2019", "Infrastructure"]
+    category: "Project's",
+    metadata: ["3rd Year", "Ben Penell","Rhino","Grasshopper"]
   },
   {
     id: "8-house",
