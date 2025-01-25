@@ -40,7 +40,8 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
           el: '.swiper-scrollbar'
         }}
         navigation={false}
-        className="w-full h-full project-carousel"
+        className="w-full h-full"
+        style={{ margin: 0, padding: 0 }}
         onSlideChange={handleSlideChange}
         initialSlide={0}
         freeMode={{
@@ -86,7 +87,9 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
             width: 'auto',
             maxWidth: '90%',
             height: '100%',
-            marginLeft: '5%'
+            marginLeft: '5%',
+            margin: 0,
+            padding: 0
           }}
           className="sm:max-w-flex "
         >
@@ -119,6 +122,8 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
               width: 'auto',
               maxWidth: '100%',
               height: '100%',
+              margin: 0,
+              padding: 0
             }}
             className="sm:max-w-[95%] md:max-w-[90%] lg:max-w-[85%]"
           >
