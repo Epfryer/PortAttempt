@@ -85,11 +85,10 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
           style={{
             width: '400px',
             height: '100%',
-            marginLeft: '5%'
           }}
           className="text-slide"
         >
-          <div className="h-full flex flex-col justify-center pl-8 pr-4">
+          <div className="h-full flex flex-col justify-center">
             <h3 className="text-xl font-semibold mb-3">{initialSlide.title}</h3>
             <p className="mt-2 text-sm text-gray-600 mb-4">{initialSlide.description}</p>
             <div className="mt-3 flex gap-4 text-sm text-gray-500">
@@ -105,7 +104,6 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
             key={index}
             style={{
               width: 'auto',
-              maxWidth: '90%',
               height: '100%',
             }}
             className="image-slide sm:max-w-[95%] md:max-w-[90%] lg:max-w-[85%]"
