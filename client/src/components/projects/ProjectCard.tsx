@@ -82,7 +82,7 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
                   <span>{project.category}</span>
                 </div>
               </div>
-              <div className="relative aspect-[17/11]">  {/* Use same aspect ratio as non-expanded view */}
+              <div className="relative w-full max-w-4xl mx-auto aspect-[16/9] overflow-hidden">  {/* Constrain carousel container */}
                 <ProjectCarousel 
                   images={content.map(item => item.image)}
                   onSlideChange={setCurrentIndex}

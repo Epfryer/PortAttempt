@@ -20,7 +20,7 @@ export function ProjectCarousel({ images, onSlideChange }: ProjectCarouselProps)
       slidesPerView={1}
       scrollbar={{ draggable: true, hide: false }}
       spaceBetween={0}
-      className="!w-full !h-full"
+      className="w-full h-full"
       onSlideChange={(swiper: SwiperType) => onSlideChange?.(swiper.activeIndex)}
     >
       {images.map((image, index) => (
