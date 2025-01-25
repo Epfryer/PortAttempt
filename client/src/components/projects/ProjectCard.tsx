@@ -95,7 +95,7 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
               transition={{ duration: 0.5 }}
             >
               <ProjectCarousel 
-                images={[project.image, project.image, project.image]}
+                images={[project.image, ...project.images]} // Main image first, followed by additional images
                 onSlideChange={setCurrentIndex}
                 initialSlide={{
                   title: project.title,
