@@ -108,7 +108,7 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
             }}
             className="image-slide sm:max-w-[95%] md:max-w-[90%] lg:max-w-[85%]"
           >
-            <div className="flex items-center justify-center h-full">
+            <div className="Autoitems-center justify-center h-full">
               <div className="carousel-slide-content">
                 <img
                   src={image}
