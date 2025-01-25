@@ -20,8 +20,7 @@ export const projects: Project[] = [
     image: "https://res.cloudinary.com/dtxqagii0/image/upload/v1737846972/Untitled-1_x6abxm.jpg",  // Updated Cloudinary URL
     images: [
       "https://res.cloudinary.com/dtxqagii0/image/upload/v1737846973/Untitled-12_zheci2.jpg"
-      "https://res.cloudinary.com/dtxqagii0/image/upload/v1737846972/Untitled-13_wq1d15.jpg"
-    ],
+      "https://res.cloudinary.com/dtxqagii0/image/upload/v1737846972/Untitled-13_wq1d15.jpg" ],
     category: "Project's",
     metadata: ["3rd Year", "Ben Penell","Rhino","Grasshopper"]
   },
