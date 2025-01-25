@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useRef } from "react";
 import type { Project } from "@/lib/projects";
+import { ProjectCarousel } from "./ProjectCarousel";  // Add this import
 
 interface ProjectCardProps {
   project: Project;
