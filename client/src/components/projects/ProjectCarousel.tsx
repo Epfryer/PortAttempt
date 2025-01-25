@@ -28,7 +28,7 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
   if (!images?.length) return null;
 
   return (
-    <div className="relative h-full pb-12">
+    <div className="relative h-full">
       <Swiper
         modules={[Navigation, Scrollbar, FreeMode, A11y]}
         slidesPerView="auto"

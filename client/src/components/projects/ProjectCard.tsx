@@ -42,7 +42,7 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
     <motion.div 
       ref={cardRef}
       layout="position"
-      className={`relative w-full mx-auto px-4 sm:px-6 lg:px-8 mb-8 ${
+      className={`relative w-full mx-auto ${
         isExpanded ? 'fixed inset-x-0 top-1/2 -translate-y-1/2 z-50' : ''
       }`}
       initial={false}
