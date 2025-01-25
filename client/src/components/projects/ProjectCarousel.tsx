@@ -14,7 +14,7 @@ export function ProjectCarousel({ images, onSlideChange }: ProjectCarouselProps)
   if (!images?.length) return null;
 
   return (
-    <div className="w-full h-full max-h-[600px]">
+    <div className="w-full h-full">
       <Swiper
         modules={[Navigation, Scrollbar, A11y]}
         navigation
@@ -25,11 +25,11 @@ export function ProjectCarousel({ images, onSlideChange }: ProjectCarouselProps)
         onSlideChange={(swiper: SwiperType) => onSlideChange?.(swiper.activeIndex)}
       >
         {images.map((image, index) => (
-          <SwiperSlide key={index} className="flex items-center justify-center">
+          <SwiperSlide key={index} className="w-full h-full">
             <img
               src={image}
               alt={`Slide ${index + 1}`}
-              className="w-full h-auto max-h-[600px] object-contain"
+              className="w-full h-full object-cover"
             />
           </SwiperSlide>
         ))}

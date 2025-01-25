@@ -72,7 +72,6 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
             </motion.div>
           </div>
         ) : (
-          // Expanded view with edge-to-edge carousel
           <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
             <div ref={carouselRef} className="max-w-7xl mx-auto grid grid-cols-[minmax(200px,25%),1fr] gap-4 p-4">
               <div className="p-4 max-w-[200px]">
@@ -83,7 +82,7 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
                   <span>{project.category}</span>
                 </div>
               </div>
-              <div className="relative h-[calc(100vh-200px)] max-h-[600px]">  {/* Adjust container height */}
+              <div className="relative aspect-[17/11]">  {/* Use same aspect ratio as non-expanded view */}
                 <ProjectCarousel 
                   images={content.map(item => item.image)}
                   onSlideChange={setCurrentIndex}
