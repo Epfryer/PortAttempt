@@ -14,7 +14,7 @@ export const projects: Project[] = [
     id: "Corp0rate-Circus",
     title: "Corp0rate-Circus",
     location: "Capri, Italy",
-    year: "3rd Year B.arch Final",
+    year: 2003,
     description: "For whom, no one knows nor cares, lies the designer forced to meet desires of disconected thoughts of corporate greed, I mean..., Uhh Thats akward that was for my creative Writing Course, Welcome to Italys Newest Attraction, the Great American Corporate Circus ",
     image: "https://res.cloudinary.com/dtxqagii0/image/upload/v1737825039/proj_304_c5eccf.png",  // Updated Cloudinary URL
     category: "Project's",
