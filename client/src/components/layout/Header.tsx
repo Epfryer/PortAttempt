@@ -25,7 +25,7 @@ export function Header() {
           <Link href="/">
             {isProjectExpanded && !shouldRevealHeader ? (
               <div className="flex items-baseline gap-1">
-                <span className="text-sm font-light">Designed by</span>
+                <span className="text-sm font-light"><span className="text-primary font-medium">Designed</span> by</span>
                 <span className="text-xl font-bold">Ethan Fryer</span>
               </div>
             ) : (
