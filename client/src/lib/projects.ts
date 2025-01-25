@@ -21,12 +21,12 @@ export const projects: Project[] = [
     metadata: ["3rd Year", "Ben Penell","Rhino","Grasshopper"]
   },
   {
-    id: "8-house",
-    title: "8 House",
-    location: "Copenhagen, Denmark",
+    id: "Loom Haus",
+    title: "Loom Haus",
+    location: "Blacksburg, Virginia",
     year: 2010,
     description: "A mixed-use development in the shape of a figure 8, featuring apartments, offices and retail.",
-    image: "https://res.cloudinary.com/your_cloud_name/image/upload/v1615406020658/proj_8_house.png",  // Updated to Cloudinary URL
+    image: "https://res.cloudinary.com/dtxqagii0/image/upload/v1737831615/Stab_.1.12_wb6rua.png",  // Updated to Cloudinary URL
     category: "Residential",
     metadata: ["2010", "Residential"]
   },
