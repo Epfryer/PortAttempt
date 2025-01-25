@@ -13,6 +13,11 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
 
+  const content = [
+    { image: project.image, text: project.description },
+    ...(project.relatedProjects || []).map(p => ({ image: p.image, text: "" }))
+  ];
+
   return (
     <motion.div 
       layout
@@ -53,17 +58,24 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
             </motion.div>
           </div>
         ) : (
-          // Expanded view - directly show ProjectCarousel
+          // Expanded view with edge-to-edge carousel
           <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
-            <ProjectCarousel 
-              projects={[
-                {
-                  ...project,
-                  description: project.description
-                },
-                ...(project.relatedProjects || [])
-              ]} 
-            />
+            <div ref={carouselRef} className="max-w-7xl mx-auto grid grid-cols-[minmax(200px,25%),1fr] gap-4 p-4">
+              <div className="p-4 max-w-[200px]">
+                <h3 className="text-lg font-semibold">{project.title}</h3>
+                <p className="mt-2 text-sm text-gray-600">{content[currentIndex].text}</p>
+                <div className="mt-4 flex gap-4 text-sm text-gray-500">
+                  <span>{project.year}</span>
+                  <span>{project.category}</span>
+                </div>
+              </div>
+              <div className="relative">
+                <ProjectCarousel 
+                  images={content.map(item => item.image)}
+                  onSlideChange={setCurrentIndex}
+                />
+              </div>
+            </div>
           </div>
         )}
       </motion.div>
