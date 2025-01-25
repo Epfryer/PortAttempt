@@ -23,14 +23,20 @@ export function ProjectCarousel({ images, onSlideChange }: ProjectCarouselProps)
         spaceBetween={0}
         className="w-full h-full"
         onSlideChange={(swiper: SwiperType) => onSlideChange?.(swiper.activeIndex)}
+        style={{ width: '100%' }}  // Force container width
       >
         {images.map((image, index) => (
-          <SwiperSlide key={index} className="w-full h-full">
-            <img
-              src={image}
-              alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover"
-            />
+          <SwiperSlide 
+            key={index} 
+            style={{ width: '100%', maxWidth: '100%' }}  // Constrain slide width
+          >
+            <div className="w-full h-full aspect-[17/11]">
+              <img
+                src={image}
+                alt={`Slide ${index + 1}`}
+                className="w-full h-full object-cover"
+              />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
