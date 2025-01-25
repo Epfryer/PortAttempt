@@ -90,7 +90,7 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
           }}
           className="sm:max-w-[95%] md:max-w-[90%] lg:max-w-[85%]"
         >
-          <div className="grid grid-cols-1 md:grid-cols-[400px,1fr] gap-4 h-full"></div>
+          <div className="grid grid-cols-1 md:grid-cols-[400px,1fr] gap-4 h-full">
             <div className="pl-8 pt-8 pr-4">
               <h3 className="text-xl font-semibold mb-3">{initialSlide.title}</h3>
               <p className="mt-2 text-sm text-gray-600 mb-4">{initialSlide.description}</p>
@@ -122,7 +122,7 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
               marginLeft: '5%'
             }}
             className="sm:max-w-[95%] md:max-w-[90%] lg:max-w-[85%]"
-          ></SwiperSlide>
+          >
             <div className="flex items-center justify-center h-full max-h-[80vh]">
               <div className="w-full h-full max-h-[80vh]">
                 <img
