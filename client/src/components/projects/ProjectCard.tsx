@@ -13,12 +13,24 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  // Create dummy content with the same image repeated
+  // Ensure images are properly set with full URLs
   const content = [
-    { image: project.image, text: project.description },
-    { image: project.image, text: "" },  // Second copy
-    { image: project.image, text: "" },  // Third copy
+    { 
+      image: project.image, 
+      text: project.description 
+    },
+    { 
+      image: project.image || '/path/to/fallback-image.jpg', 
+      text: "" 
+    },
+    { 
+      image: project.image || '/path/to/fallback-image.jpg', 
+      text: "" 
+    }
   ];
+
+  // Log to check if images are being passed correctly
+  console.log('Images being passed to carousel:', content.map(item => item.image));
 
   return (
     <motion.div 
@@ -71,7 +83,7 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
                   <span>{project.category}</span>
                 </div>
               </div>
-              <div className="relative h-[60vh]">  {/* Added fixed height */}
+              <div className="relative h-[calc(100vh-200px)] max-h-[600px]">  {/* Adjust container height */}
                 <ProjectCarousel 
                   images={content.map(item => item.image)}
                   onSlideChange={setCurrentIndex}
