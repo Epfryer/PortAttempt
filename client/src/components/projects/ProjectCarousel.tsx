@@ -111,7 +111,7 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
           </div>
         </SwiperSlide>
 
-        {/* Rest of the slides without text */}
+        {/* Rest of the slides with the same style */}
         {images.slice(1).map((image, index) => (
           <SwiperSlide 
             key={index + 1}
@@ -119,6 +119,7 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
               width: 'auto',
               maxWidth: '90%',
               height: '100%',
+              marginLeft: '5%'
             }}
             className="sm:max-w-[95%] md:max-w-[90%] lg:max-w-[85%]"
           >
