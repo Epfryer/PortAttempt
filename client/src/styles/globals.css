@@ -7,7 +7,7 @@
 .project-carousel {
   --aspect-ratio: calc(11 / 17);
   --carousel-height: min(80vh, calc(100vw * var(--aspect-ratio)));
-  --text-slide-width: 400px;
+  --text-slide-width: 300px;  /* reduced from 400px */
   
   overflow: visible !important;
   padding-bottom: 48px;
@@ -100,8 +100,14 @@ h3, p {
   max-width: var(--text-slide-width);
   display: flex;
   justify-content: flex-end;
-  padding-right: 3rem;
+  padding-right: 2rem;  /* reduced from 3rem */
   margin-left: 60vw;
+  height: 100%;
+}
+
+.project-carousel .text-slide > div {
+  max-width: 100%;
+  padding: 1rem;
 }
 
 .project-carousel .image-slide {

@@ -83,7 +83,7 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
         {/* Text-only first slide */}
         <SwiperSlide 
           style={{
-            width: '400px',
+            width: '300px',  // reduced from 400px
             height: '100%',
           }}
           className="text-slide"
