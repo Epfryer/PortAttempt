@@ -30,9 +30,11 @@ export function Header() {
               }}
             >
               {isProjectExpanded && !shouldRevealHeader ? (
-                <div className="flex items-baseline gap-2">
-                  <span className="text-lg">Designed by</span>
-                  <TypingAnimation text="Ethan Fryer" speed={50} delay={200} />
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-light">Designed by</span>
+                  <span className="text-base">
+                    <TypingAnimation text="Ethan Fryer" speed={50} delay={200} />
+                  </span>
                 </div>
               ) : (
                 <motion.span
