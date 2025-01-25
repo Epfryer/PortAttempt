@@ -119,6 +119,7 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
               width: 'auto',
               maxWidth: '90%',
               height: '100%',
+              marginLeft: '5%'
             }}
             className="sm:max-w-[95%] md:max-w-[90%] lg:max-w-[85%]"
           >
