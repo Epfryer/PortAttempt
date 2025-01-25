@@ -81,13 +81,13 @@ export function SocialLinks({ socials, className, ...props }: SocialLinksProps) 
 
 export function Footer() {
   return (
-    <footer className="bg-white py-6 text-center border-t border-gray-200">
+    <footer className="bg-white py-6 text-center">
       <SocialLinks
-        socials={[
-          { name: "GitHub", image: "/github-logo.png" },
-          { name: "Twitter", image: "/twitter-logo.png" },
-        ]}
-        className="justify-center gap-8 mb-4"
+      socials={[
+        { name: "GitHub", image: "/github-logo.png" },
+        { name: "Twitter", image: "/twitter-logo.png" },
+      ]}
+      className="justify-center gap-8 mb-4"
       />
       <p className="text-sm text-gray-500">
         © {new Date().getFullYear()} D.EF. All rights reserved.
