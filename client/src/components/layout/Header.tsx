@@ -8,8 +8,9 @@ export function Header() {
   const { isProjectExpanded, shouldRevealHeader } = useProject();
 
   const headerStyle = {
-    opacity: isProjectExpanded && !shouldRevealHeader ? 0 : 1,
-    transform: isProjectExpanded && !shouldRevealHeader ? 'translateX(-100px)' : 'none',
+    opacity: isProjectExpanded ? (shouldRevealHeader ? 1 : 0) : 1,
+    transform: isProjectExpanded ? (shouldRevealHeader ? 'none' : 'translateX(-100px)') : 'none',
+    transition: 'opacity 0.3s ease, transform 0.3s ease',
   };
 
   return (

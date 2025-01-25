@@ -35,7 +35,6 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
       const handleScroll = () => {
         const scrollPosition = window.scrollY;
         const shouldReveal = scrollPosition > 100;
-        setProjectExpanded(true);
         setShouldRevealHeader(shouldReveal);
       };
 
