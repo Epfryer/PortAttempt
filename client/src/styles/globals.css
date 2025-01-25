@@ -84,6 +84,16 @@ h3, p {
               color 0.3s ease-in-out;
 }
 
+.project-carousel .text-slide {
+  min-width: 400px;
+  max-width: 400px;
+  padding-right: 2rem;
+}
+
+.project-carousel .image-slide {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .project-carousel {
@@ -92,6 +102,12 @@ h3, p {
 
   .project-carousel .swiper-scrollbar {
     width: 80px !important;
+  }
+
+  .project-carousel .text-slide {
+    min-width: 100%;
+    max-width: 100%;
+    padding: 1rem;
   }
 }
 
