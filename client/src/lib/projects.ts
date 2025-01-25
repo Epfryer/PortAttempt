@@ -19,8 +19,9 @@ export const projects: Project[] = [
     description: "For whom, no one knows nor cares, lies the designer forced to meet desires of disconected thoughts of corporate greed, I mean..., Uhh Thats akward that was for my creative Writing Course, Welcome to Italys Newest Attraction, the Great American Corporate Circus ",
     image: "https://res.cloudinary.com/dtxqagii0/image/upload/v1737846972/Untitled-1_x6abxm.jpg",  // Updated Cloudinary URL
     images: [
-      "https://res.cloudinary.com/dtxqagii0/image/upload/v1737846973/Untitled-12_zheci2.jpg"
-      "https://res.cloudinary.com/dtxqagii0/image/upload/v1737846972/Untitled-13_wq1d15.jpg" ],
+      "https://res.cloudinary.com/dtxqagii0/image/upload/v1737846973/Untitled-12_zheci2.jpg",  // Added comma here
+      "https://res.cloudinary.com/dtxqagii0/image/upload/v1737846972/Untitled-13_wq1d15.jpg"
+    ],
     category: "Project's",
     metadata: ["3rd Year", "Ben Penell","Rhino","Grasshopper"]
   },
