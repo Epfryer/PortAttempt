@@ -31,7 +31,7 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
         behavior: 'smooth'
       });
     }
-  }, [isExpanded, setProjectExpanded]);
+  }, [isExpanded, setIsProjectExpanded]);
 
   const handleExpand = () => {
     onExpand(isExpanded ? null : project.id);
