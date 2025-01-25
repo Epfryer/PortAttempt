@@ -6,11 +6,20 @@ import 'swiper/css';
 import 'swiper/css/scrollbar';
 import type { Project } from "@/lib/projects";
 
-export function ProjectCarousel({ projects }: { projects: Project[] }) {
+export function ProjectCarousel({ projects = [] }: { projects?: Project[] }) {
   const [isOpen, setIsOpen] = useState(true);
 
   if (!isOpen) {
     return null;
+  }
+
+  // Return early if no projects
+  if (!projects || projects.length === 0) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <p>No projects to display</p>
+      </div>
+    );
   }
 
   return (
