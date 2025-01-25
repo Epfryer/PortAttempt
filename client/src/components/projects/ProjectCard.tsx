@@ -37,7 +37,7 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
       const handleScroll = () => {
         const currentScrollY = window.scrollY;
         const scrollDelta = Math.abs(currentScrollY - lastScrollY);
-        const shouldReveal = scrollDelta > 20;
+        const shouldReveal = scrollDelta > 5;
         setShouldRevealHeader(shouldReveal);
         lastScrollY = currentScrollY;
       };
