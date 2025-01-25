@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { X } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar } from 'swiper/modules';
@@ -6,14 +5,7 @@ import 'swiper/css';
 import 'swiper/css/scrollbar';
 import type { Project } from "@/lib/projects";
 
-export function ProjectCarousel({ projects = [] }: { projects?: Project[] }) {
-  const [isOpen, setIsOpen] = useState(true);
-
-  if (!isOpen) {
-    return null;
-  }
-
-  // Return early if no projects
+export function ProjectCarousel({ projects = [], onClose }: { projects?: Project[], onClose?: () => void }) {
   if (!projects || projects.length === 0) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -24,12 +16,14 @@ export function ProjectCarousel({ projects = [] }: { projects?: Project[] }) {
 
   return (
     <div className="group relative h-screen flex items-center overflow-hidden">
-      <button
-        onClick={() => setIsOpen(false)}
-        className="absolute top-4 right-4 z-20 bg-white/90 p-2 rounded-full shadow-lg hover:bg-white transition-colors"
-      >
-        <X className="w-5 h-5" />
-      </button>
+      {onClose && (
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-20 bg-white/90 p-2 rounded-full shadow-lg hover:bg-white transition-colors"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      )}
 
       <Swiper
         modules={[Scrollbar]}
