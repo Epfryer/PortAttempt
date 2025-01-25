@@ -101,6 +101,7 @@ h3, p {
   display: flex;
   justify-content: flex-end;
   padding-right: 3rem;
+  margin-left: 60vw;
 }
 
 .project-carousel .image-slide {
@@ -124,6 +125,7 @@ h3, p {
     max-width: 100%;
     padding: 1rem;
     justify-content: flex-start;
+    margin-left: 0;
   }
 }
 
