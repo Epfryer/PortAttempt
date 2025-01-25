@@ -40,9 +40,6 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
         
         if (scrollDelta > 5) {
           setShouldRevealHeader(true);
-          setTimeout(() => {
-            setShouldRevealHeader(false);
-          }, 1500);
         }
         
         lastScrollY = currentScrollY;
