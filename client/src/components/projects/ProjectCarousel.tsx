@@ -100,11 +100,11 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
               </div>
             </div>
             <div className="flex items-center justify-center">
-              <div className="w-full">
+              <div className="carousel-slide-content">
                 <img
                   src={images[0]}
                   alt={`Slide 1`}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover" // Changed to object-cover
                 />
               </div>
             </div>
@@ -123,11 +123,11 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
             className="sm:max-w-[95%] md:max-w-[90%] lg:max-w-[85%]"
           >
             <div className="flex items-center justify-center h-full">
-              <div className="w-full">
+              <div className="carousel-slide-content">
                 <img
                   src={image}
                   alt={`Slide ${index + 2}`}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover" // Changed to object-cover
                 />
               </div>
             </div>
