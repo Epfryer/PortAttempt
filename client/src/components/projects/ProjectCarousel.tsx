@@ -97,18 +97,16 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
             key={index}
             style={{
               width: 'auto',
-              height: '100%',
+              height: 'auto',
             }}
             className="image-slide sm:max-w-[95%] md:max-w-[90%] lg:max-w-[85%]"
           >
-            <div className="flex items-center justify-center h-full w-full">
-              <div className="carousel-slide-content">
-                <img
-                  src={image}
-                  alt={`Slide ${index + 1}`}
-                  loading="lazy"
-                />
-              </div>
+            <div className="carousel-slide-content">
+              <img
+                src={image}
+                alt={`Slide ${index + 1}`}
+                loading="lazy"
+              />
             </div>
           </SwiperSlide>
         ))}
