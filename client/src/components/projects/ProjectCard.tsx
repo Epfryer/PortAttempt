@@ -31,11 +31,15 @@ export function ProjectCard({ project, isExpanded, onExpand }: ProjectCardProps)
         behavior: 'smooth'
       });
 
+      let lastScrollY = window.scrollY;
+      
       // Handle header animation
       const handleScroll = () => {
-        const scrollPosition = window.scrollY;
-        const shouldReveal = scrollPosition > 100;
+        const currentScrollY = window.scrollY;
+        const scrollDelta = Math.abs(currentScrollY - lastScrollY);
+        const shouldReveal = scrollDelta > 20;
         setShouldRevealHeader(shouldReveal);
+        lastScrollY = currentScrollY;
       };
 
       window.addEventListener('scroll', handleScroll);
