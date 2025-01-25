@@ -14,7 +14,7 @@ export function ProjectCarousel({ images, onSlideChange }: ProjectCarouselProps)
   if (!images?.length) return null;
 
   return (
-    <div className="w-full h-full max-h-[600px]">  {/* Add container with max height */}
+    <div className="w-full h-full max-h-[600px]">
       <Swiper
         modules={[Navigation, Scrollbar, A11y]}
         navigation
@@ -29,7 +29,7 @@ export function ProjectCarousel({ images, onSlideChange }: ProjectCarouselProps)
             <img
               src={image}
               alt={`Slide ${index + 1}`}
-              className="w-full h-auto max-h-[600px] object-contain"  {/* Adjust image sizing */}
+              className="w-full h-auto max-h-[600px] object-contain"
             />
           </SwiperSlide>
         ))}
