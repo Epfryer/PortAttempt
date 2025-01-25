@@ -1,9 +1,10 @@
 import { v2 as cloudinary } from 'cloudinary';
 
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+    CLOUDINARY_CLOUD_NAME=dtxqagii0
+    CLOUDINARY_API_KEY=977281483896381
+    CLOUDINARY_API_SECRET=KyfC5V8wgpXabfQEpDi8mVhPsyg
+    CLOUDINARY_URL=cloudinary://<you483896381>:<KyfC5V8wgpXabfQEpDi8mVhPsyg>@dtxqagii0
 });
 
 export const uploadImage = async (filePath: string, options = {}) => {
