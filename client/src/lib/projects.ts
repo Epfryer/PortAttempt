@@ -16,7 +16,11 @@ export const projects: Project[] = [
     location: "Copenhagen, Denmark",
     year: 2019,
     description: "A waste-to-energy plant topped with a public ski slope, hiking trail and climbing wall.",
+<<<<<<< HEAD
     image: "https://res.cloudinary.com/dtxqagii0/image/upload/v1737825039/proj_304_c5eccf.png",  // Updated to Cloudinary URL
+=======
+    image: "https://BigDkClone.epf2002hi.repl.co/docs/proj%2030.jpg",  
+>>>>>>> c2f3e28f8a3e740f1d0ae53ea3ced9ab45786239
     category: "Infrastructure",
     metadata: ["2019", "Infrastructure"]
   },
