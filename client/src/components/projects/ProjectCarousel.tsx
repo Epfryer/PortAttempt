@@ -95,11 +95,7 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
         {images.map((image, index) => (
           <SwiperSlide 
             key={index}
-            style={{
-              width: 'auto',
-              height: 'auto',
-            }}
-            className="image-slide sm:max-w-[95%] md:max-w-[90%] lg:max-w-[85%]"
+            className="image-slide"
           >
             <div className="carousel-slide-content">
               <img
