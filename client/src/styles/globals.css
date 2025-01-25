@@ -96,25 +96,25 @@ h3, p {
 }
 
 .project-carousel .text-slide {
-  min-width: var(--text-slide-width);
-  max-width: var(--text-slide-width);
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 2rem;  /* reduced from 3rem */
-  margin-left: 60vw;
-  height: 100%;
+  display: none;
 }
 
-.project-carousel .text-slide > div {
-  max-width: 100%;
-  padding: 1rem;
+.fixed-text-widget {
+  position: fixed;
+  left: 60vw;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+  z-index: 40;
+  padding: 2rem;
+  transition: transform 0.3s ease-in-out;
 }
 
-.project-carousel .image-slide {
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+.fixed-text-widget .text-content {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .project-carousel {
     padding-bottom: 32px;
@@ -126,12 +126,14 @@ h3, p {
     width: 80px !important;
   }
 
-  .project-carousel .text-slide {
-    min-width: 100%;
-    max-width: 100%;
+  .fixed-text-widget {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    width: 100%;
     padding: 1rem;
-    justify-content: flex-start;
-    margin-left: 0;
+    margin-bottom: 1rem;
   }
 }
 

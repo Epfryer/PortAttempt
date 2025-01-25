@@ -29,6 +29,17 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
 
   return (
     <div className="relative h-full pb-12">
+      <div className="fixed-text-widget">
+        <div className="text-content">
+          <h3 className="text-xl font-semibold mb-3">{initialSlide.title}</h3>
+          <p className="mt-2 text-sm text-gray-600 mb-4">{initialSlide.description}</p>
+          <div className="mt-3 flex gap-4 text-sm text-gray-500">
+            <span>{initialSlide.year}</span>
+            <span>{initialSlide.category}</span>
+          </div>
+        </div>
+      </div>
+
       <Swiper
         modules={[Navigation, Scrollbar, FreeMode, A11y]}
         slidesPerView="auto"
@@ -80,24 +91,6 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
           }
         }}
       >
-        {/* Text-only first slide */}
-        <SwiperSlide 
-          style={{
-            width: '300px',  // reduced from 400px
-            height: '100%',
-          }}
-          className="text-slide"
-        >
-          <div className="h-full flex flex-col justify-center">
-            <h3 className="text-xl font-semibold mb-3">{initialSlide.title}</h3>
-            <p className="mt-2 text-sm text-gray-600 mb-4">{initialSlide.description}</p>
-            <div className="mt-3 flex gap-4 text-sm text-gray-500">
-              <span>{initialSlide.year}</span>
-              <span>{initialSlide.category}</span>
-            </div>
-          </div>
-        </SwiperSlide>
-
         {/* Image slides */}
         {images.map((image, index) => (
           <SwiperSlide 
