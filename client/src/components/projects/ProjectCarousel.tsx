@@ -84,13 +84,11 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
         <SwiperSlide 
           style={{
             width: 'auto',
-            maxWidth: '90%',
             height: '100%',
-            marginLeft: '5%'
           }}
           className="sm:max-w-[95%] md:max-w-[90%] lg:max-w-[85%]"
         >
-          <div className="grid grid-cols-1 md:grid-cols-[400px,1fr] gap-4 h-full">
+          <div className="grid grid-cols-1 md:grid-cols-[400px,1fr] gap-0 h-full">
             <div className="pl-8 pt-8 pr-4">
               <h3 className="text-xl font-semibold mb-3">{initialSlide.title}</h3>
               <p className="mt-2 text-sm text-gray-600 mb-4">{initialSlide.description}</p>
@@ -99,38 +97,33 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
                 <span>{initialSlide.category}</span>
               </div>
             </div>
-            <div className="flex items-center justify-center max-h-[80vh]">
-              <div className="w-full h-full max-h-[80vh]">
+            <div className="flex items-center justify-center h-full">
+              <div className="carousel-slide-content">
                 <img
                   src={images[0]}
                   alt={`Slide 1`}
-                  className="w-full h-auto object-contain"
                 />
               </div>
             </div>
           </div>
         </SwiperSlide>
 
-        {/* Rest of the slides without text */}
+        {/* Rest of the slides */}
         {images.slice(1).map((image, index) => (
           <SwiperSlide 
             key={index + 1}
             style={{
               width: 'auto',
-              maxWidth: '90%',
               height: '100%',
-              marginLeft: '5%'
             }}
             className="sm:max-w-[95%] md:max-w-[90%] lg:max-w-[85%]"
           >
-            <div className="flex items-center justify-center h-full max-h-[80vh]">
-              <div className="w-full h-full max-h-[80vh]">
-                <img
-                  src={image}
-                  alt={`Slide ${index + 2}`}
-                  className="w-full h-auto object-contain"
-                />
-              </div>
+            <div className="carousel-slide-content">
+              <img
+                src={image}
+                alt={`Slide ${index + 2}`}
+                loading="lazy"
+              />
             </div>
           </SwiperSlide>
         ))}
