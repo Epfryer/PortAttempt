@@ -88,7 +88,7 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
             height: '100%',
             marginLeft: '5%'
           }}
-          className="sm:max-w-[95%] md:max-w-[90%] lg:max-w-[85%]"
+          className="sm:max-w-flex "
         >
           <div className="grid grid-cols-1 md:grid-cols-[400px,1fr] gap-4 h-full">
             <div className="pl-8 pt-8 pr-4">
@@ -117,7 +117,7 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
             key={index + 1}
             style={{
               width: 'auto',
-              maxWidth: '90%',
+              maxWidth: '100%',
               height: '100%',
             }}
             className="sm:max-w-[95%] md:max-w-[90%] lg:max-w-[85%]"

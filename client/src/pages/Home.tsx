@@ -27,7 +27,7 @@ export default function Home() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="mx-auto"
+        className="max-flex mx-auto"
       >
         <div className="flex justify-center mb-12">
           <ProjectFilter 
