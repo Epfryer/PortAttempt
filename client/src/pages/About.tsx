@@ -21,19 +21,11 @@ export default function About() {
         </motion.div>
 
         <div className="max-w-xl">
-          <h1 className="text-4xl font-bold mb-8">About D.EF</h1>
+          <h1 className="text-4xl font-bold mb-8">About Ethan Fryer</h1>
 
           <div className="prose prose-lg">
             <p>
-              Ethan Fryer is an architecture student at Virginia Tech College of Architecture Arts and Design.
-            </p>
-
-            <p>
-              Coming soon
-            </p>
-
-            <p>
-              stay tuned
+               a passionate advocate for the transformative power of architecture and lifelong learning. With a strong academic background in architecture, I've cultivated a deep appreciation for the art of designing spaces that harmonize with their surroundings and positively impact communities. I thrive on creative problem-solving and am dedicated to staying at the forefront of industry advancements. Outside of architecture, I enjoy, Personal Fitness, Photography, Robotics and hiking. I'm excited about the opportunity to contribute my skills and enthusiasm to projects that make a difference.
             </p>
           </div>
         </div>
