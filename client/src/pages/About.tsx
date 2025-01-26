@@ -15,7 +15,7 @@ export default function About() {
         >
           <img
             src="https://images.unsplash.com/photo-1487958449943-2429e8be8625"
-            alt="BIG Architecture Office"
+            alt="Who Is Ethan Fryer"
             className="w-full h-full object-cover"
           />
         </motion.div>
