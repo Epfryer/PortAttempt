@@ -1,6 +1,5 @@
-import { useCallback } from "react";
-import { Button } from "@/components/ui/button";
-import type { Project } from "@/lib/projects";
+import { useCallback } from 'react';
+import cn from 'classnames';
 
 interface ProjectFilterProps {
   categories: string[];
@@ -14,26 +13,33 @@ export function ProjectFilter({ categories, activeCategory, onCategoryChange }: 
   }, [activeCategory, onCategoryChange]);
 
   return (
-    <div className="w-full flex justify-center px-4"> {/* Added container with full width */}
-      <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto"> {/* Added max-width and auto margins */}
-        <Button
-          variant={!activeCategory ? "default" : "outline"}
-          onClick={() => handleClick(null)}
-          className="transition-all"
-        >
-          All
-        </Button>
-        {categories.map((category) => (
-          <Button
-            key={category}
-            variant={category === activeCategory ? "default" : "outline"}
-            onClick={() => handleClick(category)}
-            className="transition-all"
+    <nav className="fixed top-[88px] left-6 z-40">
+      <ul className="flex flex-col space-y-2">
+        <li>
+          <button
+            onClick={() => handleClick(null)}
+            className={cn(
+              "text-sm uppercase tracking-wide transition-opacity hover:opacity-70",
+              !activeCategory ? "font-medium" : "opacity-50"
+            )}
           >
-            {category}
-          </Button>
+            All
+          </button>
+        </li>
+        {categories.map((category) => (
+          <li key={category}>
+            <button
+              onClick={() => handleClick(category)}
+              className={cn(
+                "text-sm uppercase tracking-wide transition-opacity hover:opacity-70",
+                category === activeCategory ? "font-medium" : "opacity-50"
+              )}
+            >
+              {category}
+            </button>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </nav>
   );
 }
