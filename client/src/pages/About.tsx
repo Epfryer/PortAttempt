@@ -15,25 +15,25 @@ export default function About() {
         >
           <img
             src="https://images.unsplash.com/photo-1487958449943-2429e8be8625"
-            alt="BIG Architecture Office"
+            alt="Who Is Ethan Fryer"
             className="w-full h-full object-cover"
           />
         </motion.div>
 
         <div className="max-w-xl">
-          <h1 className="text-4xl font-bold mb-8">About BIG</h1>
+          <h1 className="text-4xl font-bold mb-8">About D.EF</h1>
 
           <div className="prose prose-lg">
             <p>
-              BIG-Bjarke Ingels Group is a Copenhagen, New York, London and Barcelona based group of architects, designers, urbanists, landscape professionals, interior and product designers, researchers and inventors.
+              Ethan Fryer is an architecture student at Virginia Tech College of Architecture Arts and Design.
             </p>
 
             <p>
-              The office is currently involved in a large number of projects throughout Europe, North America, Asia and the Middle East. BIG's architecture emerges out of a careful analysis of how contemporary life constantly evolves and changes.
+              Coming soon
             </p>
 
             <p>
-              Like a form of programmatic alchemy, we create architecture by mixing conventional ingredients such as living, leisure, working, parking and shopping. By hitting the fertile overlap between pragmatic and utopia, we architects once again find the freedom to change the surface of our planet, to better fit contemporary life forms.
+              stay tuned
             </p>
           </div>
         </div>
