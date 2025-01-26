@@ -31,10 +31,9 @@ export default function Contact() {
             <div>
               <h2 className="text-xl font-medium mb-4">What is D.EF</h2>
               <address className="text-gray-600 not-italic">
-                Future Goal<br />
-                45 Main Street<br />
-                New York, NY 11201<br />
-                United States
+                D.EF - Designs by Ethan Fryer<br />
+                B.Arch Virginia Tech AAD<br />
+                Architectural Designer<br />
               </address>
               
               <div className="mt-4">
