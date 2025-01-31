@@ -78,37 +78,19 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
           className="w-full h-full project-carousel"
           onSlideChange={handleSlideChange}
           initialSlide={0}
-          allowTouchMove={false}
-          simulateTouch={false}
+          allowTouchMove={true}
+          simulateTouch={true}
           mousewheel={false}
           freeMode={{
             enabled: true,
             momentumBounce: false,
-            momentumRatio: 0,
-            momentumVelocityRatio: 0
+            momentumRatio: 0.1,
+            momentumVelocityRatio: 0.1
           }}
-          onMouseDown={() => {
-            if (swiperRef.current) {
-              swiperRef.current.allowTouchMove = true;
-              swiperRef.current.params.touchRatio = 1;
-            }
-          }}
-          onMouseUp={() => {
-            if (swiperRef.current) {
-              swiperRef.current.allowTouchMove = false;
-            }
-          }}
-          onTouchStart={() => {
-            if (swiperRef.current) {
-              swiperRef.current.allowTouchMove = true;
-              swiperRef.current.params.touchRatio = 1;
-            }
-          }}
-          onTouchEnd={() => {
-            if (swiperRef.current) {
-              swiperRef.current.allowTouchMove = false;
-            }
-          }}
+          touchRatio={1}
+          resistance={false}
+          touchAngle={45}
+          grabCursor={true}
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
           }}
