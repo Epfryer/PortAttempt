@@ -71,7 +71,7 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
         <Swiper
           modules={[Navigation, Scrollbar, FreeMode, A11y, Mousewheel]}
           slidesPerView="auto"
-          spaceBetween={0}
+          spaceBetween={-1}
           centeredSlides={false}
           scrollbar={false}
           navigation={false}
