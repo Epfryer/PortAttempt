@@ -78,19 +78,24 @@ export function ProjectCarousel({ images, onSlideChange, initialSlide }: Project
           className="w-full h-full project-carousel"
           onSlideChange={handleSlideChange}
           initialSlide={0}
-          freeMode={true}
-          mousewheel={false} // Disable mousewheel for drag-only
+          freeMode={{
+            enabled: true,
+            momentumBounce: false,
+            momentumRatio: 0,
+            momentumVelocityRatio: 0
+          }}
+          mousewheel={false}
           touchEventsTarget="container"
-          touchRatio={1} // Adjust touch sensitivity as needed
-          touchAngle={30}
-          longSwipes={false}
+          touchRatio={1}
+          touchAngle={45}
+          longSwipes={true}
           shortSwipes={true}
           followFinger={true}
-          grabCursor={true} // Provide visual feedback
+          grabCursor={true}
           preventClicks={false}
           preventClicksPropagation={false}
           touchStartPreventDefault={false}
-          resistanceRatio={0} // Remove resistance for smoother drag
+          resistanceRatio={0}
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
           }}
