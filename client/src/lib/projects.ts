@@ -68,8 +68,7 @@ export const projects: Project[] = [
       "https://res.cloudinary.com/dtxqagii0/image/upload/v1738337944/Statue_Haus12_c4q60i.jpg",
       "https://res.cloudinary.com/dtxqagii0/image/upload/v1738337945/Statue_Haus13_u8f5xg.jpg",
       "https://res.cloudinary.com/dtxqagii0/image/upload/v1738337829/Statue_Haus8_pzqz9v.jpg",
-      """
-    ],
+      ],
     category: "Residential",
     metadata: ["2016", "Residential"]
   },
